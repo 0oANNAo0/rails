@@ -7,9 +7,13 @@ services:
       - database
     ports:
       - "3000:3000"
+    volumes:
+      - .:/myapp
     environment:
       RAILS_ENV: development
   database:
     image: postgres:13
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
+volumes:
+  gem_cache:

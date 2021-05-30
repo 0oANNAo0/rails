@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @articles = Article.all
   end
@@ -12,7 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.create(article_params)
 
     if @article.save
       redirect_to @article
@@ -21,8 +23,29 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def edit
+    @article = current_user.articles.find(params[:id])
+  end
+
+  def update
+    @article = current_user.articles.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @article = current_user.articles.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path
+  end
+
   private
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :image)
   end
 end
