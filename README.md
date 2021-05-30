@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- getting started - 5
+- автентифікація різними користувачами - 2 - devise
+- авторизація (перевірка дозволу виконання дій юзером) - 3
+- завантаження картинок - 2 (завантаження на хмарне сховище типу S3 - ще +2)
+- розгортання на heroku - 3 - [Heroku](https://stark-peak-97716.herokuapp.com/)
+- Docker Compose - 3
